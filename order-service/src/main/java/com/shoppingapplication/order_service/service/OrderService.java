@@ -38,8 +38,6 @@ List<String> skuCodes=order.getOrderLineItemsList().stream()
         .map(OrderLineItemsDto->OrderLineItemsDto.getSkuCode()).collect(Collectors.toList());
 
 
-
-
 //Call Inventory Service, and place order if product is in
 // stock
    InventoryResponse[] inventoryResponseArray=  webClientBuilder.build().get()
@@ -55,8 +53,6 @@ List<String> skuCodes=order.getOrderLineItemsList().stream()
    } else {
        throw new IllegalArgumentException("Product is not in stock please try again later");
    }
-
-
 
     }
 

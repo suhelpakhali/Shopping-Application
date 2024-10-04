@@ -16,6 +16,10 @@ private final OrderService orderService;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String placeOrder(@RequestBody OrderRequest orderRequest){
+        System.out.println(orderRequest);
+        if(orderRequest==null){
+            return"orderRequest is null";
+        }
 orderService.placeOrder(orderRequest);
         return "Order Placed Successfully";
     }
