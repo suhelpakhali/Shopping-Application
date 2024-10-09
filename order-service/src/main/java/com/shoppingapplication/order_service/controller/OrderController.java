@@ -20,7 +20,7 @@ private final OrderService orderService;
         if(orderRequest==null){
             return"orderRequest is null";
         }
-orderService.placeOrder(orderRequest);
+        orderService.placeOrder(orderRequest);
         return "Order Placed Successfully";
     }
 }
