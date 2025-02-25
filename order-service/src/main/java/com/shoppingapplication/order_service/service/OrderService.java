@@ -7,6 +7,7 @@ import com.shoppingapplication.order_service.model.Order;
 import com.shoppingapplication.order_service.model.OrderLineItems;
 import com.shoppingapplication.order_service.repository.OrderRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -19,12 +20,13 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 @Transactional
+@Slf4j
 public class OrderService {
 
     private final OrderRepository orderRepository;
     private final WebClient.Builder webClientBuilder;
     public String placeOrder(OrderRequest orderRequest){
-        System.out.println(orderRequest);
+        log.info("Entering Service class for Order");
         Order order= new Order();
 order.setOrderNumber(UUID.randomUUID().toString());
 List<OrderLineItems> orderLineItems=orderRequest.getOrderLineItemsDtoList().stream()
